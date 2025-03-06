@@ -16,7 +16,7 @@ export class HealthController {
     private db: TypeOrmHealthIndicator,
     @InjectRepository(Dummy)
     private readonly dummyRepository: Repository<Dummy>,
-  ) {}
+  ) { }
 
   @Get('/ping')
   @HealthCheck()

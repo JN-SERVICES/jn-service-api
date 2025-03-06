@@ -17,6 +17,7 @@ function setupSwagger<T>(app: INestApplication<T>) {
   const document = SwaggerModule.createDocument(app, openapiConfig);
   SwaggerModule.setup('docs', app, document);
 }
+
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule, {
@@ -24,11 +25,9 @@ async function bootstrap() {
     });
     setupSwagger(app);
     app.enableCors();
-
-    await app.listen(process.env.PORT ?? 3000);
-    console.log(
-      `🚀 Server is running on http://localhost:${process.env.PORT ?? 3000}`,
-    );
+    const port = process.env.PORT ?? 3000
+    await app.listen(port);
+    console.log(`--> Server is running on http://localhost:${port}`);
   } catch (error) {
     console.error('❌ Error starting the application:', error);
     process.exit(1);

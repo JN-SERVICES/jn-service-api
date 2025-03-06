@@ -1,32 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 import { User } from '../model/user.entity';
-import { UserRepository } from '../repository/user.repository';
+import { Criteria } from './utils/criteria';
+import { PaginationParams } from 'src/rest/decorator';
+import { findByCriteria } from './utils/find-by-cireria';
+import { UPDATED_AT_CREATED_AT_ORDER_BY } from './utils/default-order-by';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(UserRepository)
-    private readonly userRepository: UserRepository,
-  ) {}
+    @InjectRepository(User)
+    private readonly repository: Repository<User>,
+  ) { }
 
-  createUser(userData: Partial<User>): Promise<User> {
-    return this.userRepository.createUser(userData);
+  async findByEmail(email: string) {
+    return this.repository.findOneBy({ email });
   }
 
-  findAllUsers(): Promise<User[]> {
-    return this.userRepository.findAllUsers();
+  async findById(id: string) {
+    return this.repository.findOneBy({ id });
   }
 
-  findUserById(id: string): Promise<User | null> {
-    return this.userRepository.findUserById(id);
-  }
-
-  updateUser(id: string, userData: Partial<User>): Promise<User | null> {
-    return this.userRepository.updateUser(id, userData);
-  }
-
-  deleteUser(id: string): Promise<void> {
-    return this.userRepository.deleteUser(id);
+  async findAll(pagination: PaginationParams, criteria: Criteria<User>) {
+    return findByCriteria<User>({
+      repository: this.repository,
+      criteria,
+      pagination,
+      order: UPDATED_AT_CREATED_AT_ORDER_BY,
+    });
   }
 }
