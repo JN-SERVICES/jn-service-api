@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
@@ -7,26 +7,23 @@ import {
   AuthenticatedUser,
   AuthenticatedUserToken,
 } from './decorators';
+
 import { User } from 'src/model';
+import { ApiRequired } from 'src/rest/docs/decorator';
+import { Whoami } from 'src/auth/model';
 
 @Controller()
 @ApiTags('Security')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
-  // Check if user exist in db and in firebase db
   @Get('/whoami')
   @Authenticated()
+  @ApiRequired({ operationId: "whoami", type: Whoami })
   async whoami(
     @AuthenticatedUser() user: User,
     @AuthenticatedUserToken() token: string,
   ) {
-    //TODO
-  }
-
-  //TODO: Check only if the user exist in db
-  @Post('/complete-information')
-  async signup() {
-    //TODO
+    return this.authService.whoami(user, token);
   }
 }

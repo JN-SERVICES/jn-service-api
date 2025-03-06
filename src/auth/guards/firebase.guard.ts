@@ -1,2 +1,12 @@
-// SET USER = Requet.user (AND IF NOT EXIST, YOU SHOULD RETURN A REDIRECT CODE STATUS OR SOMETHING ELSE )
-export class FirebaseGuard {}
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
+
+@Injectable()
+export class FirebaseGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    const request = context.switchToHttp().getRequest();
+    request.user = {} // user;
+    request.token = "token" // token;
+
+    return true;
+  }
+}
