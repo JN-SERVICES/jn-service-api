@@ -1,9 +1,9 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsDateString, IsEmail, IsString, IsUUID } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDateString, IsEmail, IsString, IsUUID } from 'class-validator';
 
 export class User {
   @IsUUID()
-  @ApiProperty({ format: "uuid" })
+  @ApiProperty({ format: 'uuid' })
   id: string;
 
   @IsString()
@@ -31,10 +31,10 @@ export class User {
   avatar: string;
 
   @IsDateString()
-  @ApiProperty({ format: "date-time" })
+  @ApiProperty({ format: 'date-time' })
   createdAt: string;
 
   @IsDateString()
-  @ApiProperty({ format: "date-time" })
+  @ApiProperty({ format: 'date-time' })
   updatedAt: string;
 }

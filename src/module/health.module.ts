@@ -9,4 +9,4 @@ import { HealthController } from 'src/rest/endpoint';
   imports: [TerminusModule, TypeOrmModule.forFeature([Dummy])],
   controllers: [HealthController],
 })
-export class HealthModule { }
+export class HealthModule {}

@@ -15,11 +15,11 @@ import { Whoami } from 'src/auth/model';
 @Controller()
 @ApiTags('Security')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Get('/whoami')
   @Authenticated()
-  @ApiRequired({ operationId: "whoami", type: Whoami })
+  @ApiRequired({ operationId: 'whoami', type: Whoami })
   async whoami(
     @AuthenticatedUser() user: User,
     @AuthenticatedUserToken() token: string,

@@ -1,5 +1,5 @@
-import { applyDecorators } from "@nestjs/common";
-import { ApiQuery, ApiQueryOptions } from "@nestjs/swagger";
+import { applyDecorators } from '@nestjs/common';
+import { ApiQuery, ApiQueryOptions } from '@nestjs/swagger';
 
 export type ApiCriteriaOptions = Partial<ApiQueryOptions>;
 

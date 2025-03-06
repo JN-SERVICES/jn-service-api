@@ -1,5 +1,45 @@
 openapi: 3.0.0
 paths:
+  /whoami:
+    get:
+      operationId: whoami
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Whoami'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+      security:
+        - bearer: []
+      summary: ''
+      tags:
+        - Security
   /ping:
     get:
       operationId: HealthController_checkPing
@@ -232,12 +272,14 @@ paths:
       tags:
         - Health
 info:
-  title: Jfds Api
-  description: Jfds
+  title: Jn Service API
+  description: JnService
   version: 0.0.1
   contact: {}
 tags:
   - name: Health
+    description: ''
+  - name: Security
     description: ''
 servers:
   - url: http://localhost:3000
@@ -247,4 +289,56 @@ components:
       scheme: bearer
       bearerFormat: JWT
       type: http
-  schemas: {}
+  schemas:
+    Whoami:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firebaseUID:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        token:
+          type: string
+      required:
+        - id
+        - firebaseUID
+        - email
+        - username
+        - firstName
+        - lastName
+        - avatar
+        - createdAt
+        - updatedAt
+        - token
+    ApiResponseError:
+      type: object
+      properties:
+        statusCode:
+          type: number
+        message:
+          type: string
+        error:
+          type: string
+      required:
+        - statusCode
+        - message
+        - error

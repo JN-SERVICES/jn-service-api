@@ -1,30 +1,30 @@
-import { applyDecorators } from "@nestjs/common";
-import { ApiQuery } from "@nestjs/swagger";
+import { applyDecorators } from '@nestjs/common';
+import { ApiQuery } from '@nestjs/swagger';
 
-import { MAX_ITEM_PER_PAGE } from "src/rest/utils/constant";
+import { MAX_ITEM_PER_PAGE } from 'src/rest/utils/constant';
 
 export function ApiPagination() {
   return applyDecorators(
     ApiQuery({
-      name: "page",
-      type: "number",
+      name: 'page',
+      type: 'number',
       required: false,
       schema: {
-        type: "number",
+        type: 'number',
         minimum: 1,
         default: 1,
       },
     }),
     ApiQuery({
-      name: "pageSize",
-      type: "number",
+      name: 'pageSize',
+      type: 'number',
       required: false,
       schema: {
-        type: "number",
+        type: 'number',
         default: 10,
         minimum: 1,
         maximum: MAX_ITEM_PER_PAGE,
       },
-    })
+    }),
   );
 }

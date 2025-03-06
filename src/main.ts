@@ -26,7 +26,7 @@ async function bootstrap() {
     });
     setupSwagger(app);
     app.enableCors();
-    const port = process.env.PORT ?? 3000
+    const port = process.env.PORT ?? 3000;
     await app.listen(port);
     console.log(`-> Server is running on http://localhost:${port}`);
   } catch (error) {

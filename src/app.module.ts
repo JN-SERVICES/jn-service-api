@@ -13,7 +13,7 @@ import { AuthModule } from './auth';
     DatabaseModule,
     TerminusModule,
     AuthModule,
-    HealthModule
+    HealthModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}

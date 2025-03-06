@@ -2,11 +2,11 @@ import {
   createParamDecorator,
   ExecutionContext,
   BadRequestException,
-} from "@nestjs/common";
-import { Max, IsInt, Min, validate } from "class-validator";
-import { plainToClass } from "class-transformer";
+} from '@nestjs/common';
+import { Max, IsInt, Min, validate } from 'class-validator';
+import { plainToClass } from 'class-transformer';
 
-import { MAX_ITEM_PER_PAGE } from "../utils/constant";
+import { MAX_ITEM_PER_PAGE } from '../utils/constant';
 
 export class PaginationParams {
   @IsInt()
@@ -31,9 +31,9 @@ export const Pagination = createParamDecorator(
 
     const errors = await validate(paginationParams);
     if (errors.length > 0) {
-      throw new BadRequestException("Invalid pagination parameters");
+      throw new BadRequestException('Invalid pagination parameters');
     }
 
     return paginationParams;
-  }
+  },
 );

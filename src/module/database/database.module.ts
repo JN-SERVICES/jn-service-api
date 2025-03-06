@@ -18,4 +18,4 @@ import { User, Dummy } from 'src/model';
     }),
   ],
 })
-export class DatabaseModule { }
+export class DatabaseModule {}

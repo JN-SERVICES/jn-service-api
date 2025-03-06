@@ -1,4 +1,4 @@
-import { applyDecorators } from "@nestjs/common";
+import { applyDecorators } from '@nestjs/common';
 import {
   ApiOkResponse,
   ApiForbiddenResponse,
@@ -9,11 +9,11 @@ import {
   ApiProperty,
   ApiBadRequestResponse,
   ApiOperationOptions,
-} from "@nestjs/swagger";
+} from '@nestjs/swagger';
 
 type ApiRequiredOptions = {
   operationId: string;
-  type: ApiResponseMetadata["type"];
+  type: ApiResponseMetadata['type'];
   operationOptions?: ApiOperationOptions;
 };
 
@@ -37,6 +37,6 @@ export function ApiRequired({
     ApiForbiddenResponse({ type: ApiResponseError }),
     ApiInternalServerErrorResponse({ type: ApiResponseError }),
     ApiNotFoundResponse({ type: ApiResponseError }),
-    ApiBadRequestResponse({ type: ApiResponseError })
+    ApiBadRequestResponse({ type: ApiResponseError }),
   );
 }

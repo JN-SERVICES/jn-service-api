@@ -1,8 +1,8 @@
-import { FindManyOptions, ObjectLiteral, Repository } from "typeorm";
+import { FindManyOptions, ObjectLiteral, Repository } from 'typeorm';
 
-import { Criteria } from "./criteria";
-import { PaginationParams } from "src/rest/decorator";
-import { createPagination } from "./create-pagination";
+import { Criteria } from './criteria';
+import { PaginationParams } from 'src/rest/decorator';
+import { createPagination } from './create-pagination';
 
 export const findByCriteria = async <T extends ObjectLiteral>({
   pagination,
