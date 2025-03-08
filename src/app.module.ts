@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { ConfigModule } from '@nestjs/config';
 
-import { DatabaseModule, HealthModule } from './module';
 import { AuthModule } from './auth';
+import { DatabaseModule, HealthModule } from './module';
+import { FirebaseModule } from './module/firebase';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AuthModule } from './auth';
     }),
     DatabaseModule,
     TerminusModule,
+    FirebaseModule,
     AuthModule,
     HealthModule,
   ],
