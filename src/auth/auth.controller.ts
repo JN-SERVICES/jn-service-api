@@ -24,6 +24,6 @@ export class AuthController {
     @AuthenticatedUser() user: User,
     @AuthenticatedUserToken() token: string,
   ) {
-    return this.authService.whoami(user, token);
+    return this.authService.toWhoami(user, token);
   }
 }

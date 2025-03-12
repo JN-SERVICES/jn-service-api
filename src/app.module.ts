@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from './auth';
 import { DatabaseModule, HealthModule } from './module';
-import { FirebaseModule } from './module/firebase';
 
 @Module({
   imports: [
@@ -13,7 +12,6 @@ import { FirebaseModule } from './module/firebase';
     }),
     DatabaseModule,
     TerminusModule,
-    FirebaseModule,
     AuthModule,
     HealthModule,
   ],

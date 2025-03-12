@@ -8,7 +8,7 @@ import { UserMapper } from 'src/rest/mapper';
 export class AuthService {
   constructor(private readonly userMapper: UserMapper) {}
 
-  async whoami(user: User, token: string): Promise<Whoami> {
+  async toWhoami(user: User, token: string): Promise<Whoami> {
     const restUser = await this.userMapper.toRest(user);
     return { ...restUser, token };
   }
